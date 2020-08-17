@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'test') {
 
 module.exports = (env) => {
   const isProduction = env === 'production';
-
+  const CSSExtract=new MiniCssExtractPlugin()
   return {
     entry: ['babel-polyfill', './src/app.js'],
     output: {
@@ -50,7 +50,7 @@ module.exports = (env) => {
     ]
     },
     plugins: [
-      new MiniCssExtractPlugin(),
+      CSSExtract,
       new webpack.DefinePlugin({
         'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
         'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
